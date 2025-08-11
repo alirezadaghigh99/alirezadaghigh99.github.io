@@ -32,24 +32,79 @@
     .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
     .dark .glass { background: rgba(15,23,42,0.6); }
     .tag { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ring-1 ring-slate-200 dark:ring-slate-700; }
+    
+    /* Enhanced animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes gradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .animate-fadeInUp { animation: fadeInUp 0.6s ease-out; }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-gradient { animation: gradient 15s ease infinite; background-size: 400% 400%; }
+    
+    .hero-gradient {
+      background: linear-gradient(-45deg, #0ea5e9, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 400% 400%;
+    }
+    
+    .project-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .skill-tag {
+      transition: all 0.2s ease;
+    }
+    .skill-tag:hover {
+      transform: scale(1.05);
+      background: rgba(14, 165, 233, 0.1);
+      border-color: #0ea5e9;
+    }
+    
+    /* Loading animation */
+    .loading-spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #f3f4f6;
+      border-top: 2px solid #0ea5e9;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
-<body class="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+<body class="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 scroll-smooth">
   <!-- Header / Nav -->
   <header class="sticky top-0 z-50 border-b border-slate-200/70 dark:border-slate-800/60 bg-white/70 dark:bg-slate-950/60 backdrop-blur">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-2">
-        <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500"></div>
+        <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500 animate-float"></div>
         <span class="font-semibold">Alireza Daqiq</span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a class="hover:text-sky-600" href="#experience">Experience</a>
-        <a class="hover:text-sky-600" href="#projects">Projects</a>
-        <a class="hover:text-sky-600" href="#skills">Skills</a>
-        <a class="hover:text-sky-600" href="#contact">Contact</a>
+        <a class="hover:text-sky-600 transition-colors duration-200" href="#experience">Experience</a>
+        <a class="hover:text-sky-600 transition-colors duration-200" href="#projects">Projects</a>
+        <a class="hover:text-sky-600 transition-colors duration-200" href="#skills">Skills</a>
+        <a class="hover:text-sky-600 transition-colors duration-200" href="#contact">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
-        <button id="themeToggle" class="h-9 w-9 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800 grid place-items-center" aria-label="Toggle theme">
+        <button id="themeToggle" class="h-9 w-9 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800 grid place-items-center hover:ring-sky-400 hover:bg-sky-50 dark:hover:bg-sky-900/20 transition-all duration-200" aria-label="Toggle theme">
           <!-- icon swapped by JS -->
           <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v2m0 14v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
           <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 15.5A8.38 8.38 0 1 1 8.5 4 6.5 6.5 0 0 0 20 15.5z"/></svg>
@@ -61,10 +116,11 @@
 
   <!-- Hero -->
   <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 hero-gradient animate-gradient opacity-5 pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-sky-50/60 to-transparent dark:from-sky-900/10 pointer-events-none"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
       <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <div>
+        <div class="animate-fadeInUp">
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
             Software Engineer & ML Practitioner
           </h1>
@@ -79,8 +135,8 @@
             <a class="tag hover:bg-slate-100 dark:hover:bg-slate-900" href="mailto:alireza.daghigh1999@gmail.com">Email</a>
           </div>
         </div>
-        <div class="relative">
-          <div class="glass rounded-3xl p-6 ring-1 ring-slate-200 dark:ring-slate-800 shadow-xl">
+        <div class="relative animate-fadeInUp" style="animation-delay: 0.2s;">
+          <div class="glass rounded-3xl p-6 ring-1 ring-slate-200 dark:ring-slate-800 shadow-xl hover:shadow-2xl transition-all duration-300">
             <h2 class="text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">Quick Highlights</h2>
             <ul class="mt-4 space-y-3 text-sm leading-relaxed">
               <li>• Built a <strong>code-generation benchmark</strong> for DL (520 tasks, 3K+ tests) — evaluated GPT‑4o, Claude 3.5, LLaMA 3.1.</li>
@@ -164,70 +220,34 @@
     </div>
   </section>
 
-  <!-- Projects (Pinned) -->
+  <!-- Projects (Dynamic GitHub Repositories) -->
   <section id="projects" class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-end justify-between gap-4 flex-wrap">
-        <h2 class="text-2xl sm:text-3xl font-bold">Pinned Projects</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold">Featured Projects</h2>
         <a class="text-sm text-sky-600 hover:underline" href="https://github.com/alirezadaghigh99?tab=repositories" target="_blank" rel="noreferrer">View all →</a>
       </div>
-      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- DL-Bench -->
-        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/DL-Bench" target="_blank" rel="noreferrer">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-semibold leading-tight">DL-Bench</h3>
-            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Deep learning benchmarking utilities and experiments.</p>
-          <div class="mt-4 text-xs text-slate-500">Repo · Updated frequently</div>
-        </a>
-        <!-- medical_rag -->
-        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/medical_rag" target="_blank" rel="noreferrer">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-semibold leading-tight">medical_rag</h3>
-            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Retrieval‑augmented generation experiments for medical texts.</p>
-          <div class="mt-4 text-xs text-slate-500">Repo · RAG</div>
-        </a>
-        <!-- captcha (fork) -->
-        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/captcha" target="_blank" rel="noreferrer">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-semibold leading-tight">captcha</h3>
-            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Go · Fork</span>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Go package for generating and verifying image/audio CAPTCHAs.</p>
-          <div class="mt-4 text-xs text-slate-500">Forked from dchest/captcha</div>
-        </a>
-        <!-- database-project -->
-        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/database-project" target="_blank" rel="noreferrer">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-semibold leading-tight">database-project</h3>
-            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Coursework project involving database design/queries.</p>
-          <div class="mt-4 text-xs text-slate-500">Repo · Academic</div>
-        </a>
-        <!-- ReadmeAI -->
-        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/ReadmeAI" target="_blank" rel="noreferrer">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-semibold leading-tight">ReadmeAI</h3>
-            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Readme tooling / templates enhanced with AI helpers.</p>
-          <div class="mt-4 text-xs text-slate-500">Repo</div>
-        </a>
-        <!-- Splitwise (fork) -->
-        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/Splitwise" target="_blank" rel="noreferrer">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-semibold leading-tight">Splitwise</h3>
-            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">JavaScript · Fork</span>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Fork of a Splitwise‑style app.</p>
-          <div class="mt-4 text-xs text-slate-500">Forked from nimajam41/DongLand</div>
-        </a>
+      
+      <!-- Loading State -->
+      <div id="repos-loading" class="mt-8 flex items-center justify-center gap-3 text-slate-500">
+        <div class="loading-spinner"></div>
+        <span>Loading repositories...</span>
       </div>
-      <p class="mt-6 text-xs text-slate-500">Pinned list sourced from your GitHub profile.</p>
+      
+      <!-- Error State -->
+      <div id="repos-error" class="mt-8 hidden">
+        <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl p-6 text-center">
+          <p class="text-red-600 dark:text-red-400">Failed to load repositories. Please check your internet connection.</p>
+          <button onclick="loadRepositories()" class="mt-3 text-sm text-red-700 dark:text-red-300 hover:underline">Try again</button>
+        </div>
+      </div>
+      
+      <!-- Repositories Grid -->
+      <div id="repos-grid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+        <!-- Repositories will be loaded here dynamically -->
+      </div>
+      
+      <p class="mt-6 text-xs text-slate-500">Repositories fetched live from GitHub API, sorted by stars and recent activity.</p>
     </div>
   </section>
 
@@ -239,28 +259,28 @@
         <div class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
           <h3 class="font-semibold">Backend & Platforms</h3>
           <div class="mt-4 flex flex-wrap gap-2 text-sm">
-            <span class="tag">Python</span>
-            <span class="tag">Django / DRF</span>
-            <span class="tag">Golang</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Redis</span>
-            <span class="tag">Celery</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Git/GitHub</span>
+            <span class="tag skill-tag">Python</span>
+            <span class="tag skill-tag">Django / DRF</span>
+            <span class="tag skill-tag">Golang</span>
+            <span class="tag skill-tag">PostgreSQL</span>
+            <span class="tag skill-tag">MySQL</span>
+            <span class="tag skill-tag">Redis</span>
+            <span class="tag skill-tag">Celery</span>
+            <span class="tag skill-tag">Linux</span>
+            <span class="tag skill-tag">Git/GitHub</span>
           </div>
         </div>
         <div class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
           <h3 class="font-semibold">MLOps & Cloud</h3>
           <div class="mt-4 flex flex-wrap gap-2 text-sm">
-            <span class="tag">Docker</span>
-            <span class="tag">Kubernetes</span>
-            <span class="tag">AWS</span>
-            <span class="tag">TFX</span>
-            <span class="tag">Airflow</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">Prometheus</span>
-            <span class="tag">CI/CD</span>
+            <span class="tag skill-tag">Docker</span>
+            <span class="tag skill-tag">Kubernetes</span>
+            <span class="tag skill-tag">AWS</span>
+            <span class="tag skill-tag">TFX</span>
+            <span class="tag skill-tag">Airflow</span>
+            <span class="tag skill-tag">PyTorch</span>
+            <span class="tag skill-tag">Prometheus</span>
+            <span class="tag skill-tag">CI/CD</span>
           </div>
         </div>
       </div>
@@ -348,56 +368,118 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // GitHub repos — top 6 by stars (non-forks), then recency fallback
-    async function loadRepos() {
+    // GitHub repositories - Enhanced loading with better UX
+    async function loadRepositories() {
       const user = 'alirezadaghigh99';
-      const grid = document.getElementById('repoGrid');
-      const error = document.getElementById('repoError');
+      const loading = document.getElementById('repos-loading');
+      const error = document.getElementById('repos-error');
+      const grid = document.getElementById('repos-grid');
+      
+      // Show loading state
+      loading.classList.remove('hidden');
+      error.classList.add('hidden');
+      grid.classList.add('hidden');
+      grid.innerHTML = '';
+      
       try {
         const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`);
-        if (!res.ok) throw new Error('GitHub API error');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
+        
+        // Filter and sort repositories
         const repos = data
-          .filter(r => !r.fork)
-          .sort((a,b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
-          .slice(0, 6);
+          .filter(r => !r.fork) // Exclude forks
+          .sort((a, b) => {
+            // Priority order: stars > recent activity > name
+            const starDiff = b.stargazers_count - a.stargazers_count;
+            if (starDiff !== 0) return starDiff;
+            const dateDiff = new Date(b.pushed_at) - new Date(a.pushed_at);
+            if (dateDiff !== 0) return dateDiff;
+            return a.name.localeCompare(b.name);
+          })
+          .slice(0, 9); // Show up to 9 repositories
 
         if (repos.length === 0) {
-          error.classList.remove('hidden');
-          return;
+          throw new Error('No repositories found');
         }
 
+        // Language colors for visual consistency
         const langColors = {
-          'Python': '#3572A5', 'JavaScript': '#f1e05a', 'TypeScript': '#3178c6', 'Go': '#00ADD8', 'C++': '#f34b7d', 'C': '#555555', 'Java': '#b07219', 'HTML': '#e34c26', 'CSS': '#563d7c'
+          'Python': '#3572A5', 'JavaScript': '#f1e05a', 'TypeScript': '#3178c6', 
+          'Go': '#00ADD8', 'C++': '#f34b7d', 'C': '#555555', 'Java': '#b07219', 
+          'HTML': '#e34c26', 'CSS': '#563d7c', 'Shell': '#89e051', 'Dockerfile': '#384d54',
+          'Jupyter Notebook': '#DA5B0B', 'Vue': '#2c3e50', 'Rust': '#dea584'
         };
 
-        for (const r of repos) {
+        // Create repository cards with staggered animations
+        repos.forEach((repo, index) => {
           const card = document.createElement('a');
-          card.href = r.html_url;
+          card.href = repo.html_url;
           card.target = '_blank';
           card.rel = 'noreferrer';
-          card.className = 'group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition';
+          card.className = 'project-card group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 animate-fadeInUp';
+          card.style.animationDelay = `${index * 0.1}s`;
 
-          const langDot = `<span class="inline-flex items-center gap-2 text-xs text-slate-500"><span class="h-2 w-2 rounded-full" style="background:${langColors[r.language]||'#94a3b8'}"></span>${r.language||'—'}</span>`;
+          // Language indicator with color
+          const langColor = langColors[repo.language] || '#94a3b8';
+          const langIndicator = repo.language 
+            ? `<span class="inline-flex items-center gap-2 text-xs text-slate-500">
+                <span class="h-2 w-2 rounded-full" style="background:${langColor}"></span>
+                ${repo.language}
+              </span>`
+            : '<span class="text-xs text-slate-500">—</span>';
+
+          // Format dates nicely
+          const lastUpdate = new Date(repo.pushed_at);
+          const now = new Date();
+          const diffDays = Math.floor((now - lastUpdate) / (1000 * 60 * 60 * 24));
+          let updateText;
+          if (diffDays === 0) updateText = 'Today';
+          else if (diffDays === 1) updateText = 'Yesterday';
+          else if (diffDays < 30) updateText = `${diffDays} days ago`;
+          else if (diffDays < 365) updateText = `${Math.floor(diffDays / 30)} months ago`;
+          else updateText = `${Math.floor(diffDays / 365)} years ago`;
+
+          // Repository topics as tags
+          const topics = repo.topics?.slice(0, 3) || [];
+          const topicTags = topics.map(topic => 
+            `<span class="text-xs px-2 py-0.5 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">${topic}</span>`
+          ).join(' ');
 
           card.innerHTML = `
             <div class="flex items-start justify-between gap-3">
-              <h3 class="font-semibold leading-tight">${r.name}</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">★ ${r.stargazers_count}</span>
+              <h3 class="font-semibold leading-tight text-slate-900 dark:text-slate-100 group-hover:text-sky-600 transition-colors">
+                ${repo.name}
+              </h3>
+              <div class="flex items-center gap-2">
+                ${repo.stargazers_count > 0 ? `<span class="text-xs px-2 py-0.5 rounded-full bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 ring-1 ring-yellow-200 dark:ring-yellow-800">★ ${repo.stargazers_count}</span>` : ''}
+              </div>
             </div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">${r.description || 'No description provided.'}</p>
-            <div class="mt-4 flex items-center justify-between text-xs">
-              ${langDot}
-              <span class="text-slate-500">Updated ${new Date(r.pushed_at).toLocaleDateString()}</span>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+              ${repo.description || 'No description available.'}
+            </p>
+            ${topics.length > 0 ? `<div class="mt-3 flex flex-wrap gap-1">${topicTags}</div>` : ''}
+            <div class="mt-4 flex items-center justify-between text-xs border-t border-slate-100 dark:border-slate-800 pt-3">
+              ${langIndicator}
+              <span class="text-slate-500">Updated ${updateText}</span>
             </div>`;
 
           grid.appendChild(card);
-        }
+        });
+
+        // Show the grid
+        loading.classList.add('hidden');
+        grid.classList.remove('hidden');
+        
       } catch (e) {
+        console.error('Failed to load repositories:', e);
+        loading.classList.add('hidden');
         error.classList.remove('hidden');
       }
     }
-    loadRepos();
+
+    // Load repositories on page load
+    loadRepositories();
   </script>
 </body>
 </html>
