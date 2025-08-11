@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alireza Daqiq — Software & ML Engineer</title>
+  <meta name="description" content="Alireza Daqiq — Backend engineer & MLOps learner. Building scalable systems with Django, Go, Docker, AWS, and modern LLM tooling." />
+  <meta property="og:title" content="Alireza Daqiq — Software & ML Engineer" />
+  <meta property="og:description" content="Backend + ML — Django, Golang, Docker/K8s, AWS, PostgreSQL, LLM agents & evaluation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/63207952?v=4" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Tailwind (CDN for quick start) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif"],
+          }
+        }
+      },
+      darkMode: 'class'
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); }
+    .dark .glass { background: rgba(15,23,42,0.6); }
+    .tag { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ring-1 ring-slate-200 dark:ring-slate-700; }
+  </style>
+</head>
+<body class="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 dark:border-slate-800/60 bg-white/70 dark:bg-slate-950/60 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500"></div>
+        <span class="font-semibold">Alireza Daqiq</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a class="hover:text-sky-600" href="#experience">Experience</a>
+        <a class="hover:text-sky-600" href="#projects">Projects</a>
+        <a class="hover:text-sky-600" href="#skills">Skills</a>
+        <a class="hover:text-sky-600" href="#contact">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" class="h-9 w-9 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800 grid place-items-center" aria-label="Toggle theme">
+          <!-- icon swapped by JS -->
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v2m0 14v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 15.5A8.38 8.38 0 1 1 8.5 4 6.5 6.5 0 0 0 20 15.5z"/></svg>
+        </button>
+        <a href="/Daqiq_Resume_Update.pdf" class="hidden sm:inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-50/60 to-transparent dark:from-sky-900/10 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+            Software Engineer & ML Practitioner
+          </h1>
+          <p class="mt-5 text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+            I build scalable backends and ML tooling: <span class="font-medium">Django</span>, <span class="font-medium">Golang</span>, <span class="font-medium">Docker/K8s</span>, <span class="font-medium">AWS</span>, and <span class="font-medium">PostgreSQL</span>. Recently: benchmarking LLM agents, code-gen datasets (520 tasks, 3K+ tests), and agentic evaluation frameworks.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="tag">Toronto, Canada</span>
+            <span class="tag">Open to relocate</span>
+            <a class="tag hover:bg-slate-100 dark:hover:bg-slate-900" href="https://github.com/alirezadaghigh99" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="tag hover:bg-slate-100 dark:hover:bg-slate-900" href="https://www.linkedin.com/in/alireza-daqiq/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="tag hover:bg-slate-100 dark:hover:bg-slate-900" href="mailto:alireza.daghigh1999@gmail.com">Email</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="glass rounded-3xl p-6 ring-1 ring-slate-200 dark:ring-slate-800 shadow-xl">
+            <h2 class="text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">Quick Highlights</h2>
+            <ul class="mt-4 space-y-3 text-sm leading-relaxed">
+              <li>• Built a <strong>code-generation benchmark</strong> for DL (520 tasks, 3K+ tests) — evaluated GPT‑4o, Claude 3.5, LLaMA 3.1.</li>
+              <li>• <strong>LLM Agent evaluation</strong>: containerized benchmarking and protocols to find reasoning bottlenecks.</li>
+              <li>• <strong>MLOps</strong>: TFX + Airflow pipelines; daily retraining; model serving on K8s.</li>
+              <li>• <strong>Backend</strong>: Django/DRF, Go; REST APIs; Celery; Redis; PostgreSQL/MySQL.</li>
+              <li>• <strong>DevOps/Cloud</strong>: Docker, Kubernetes, AWS; CI/CD; monitoring with Prometheus.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-16 lg:py-24 bg-white dark:bg-slate-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold">Experience</h2>
+      <ol class="mt-8 relative border-s border-transparent">
+        <li class="mb-10 ms-4">
+          <div class="absolute w-3 h-3 bg-sky-500 rounded-full mt-2.5 -start-1.5 border border-white dark:border-slate-900"></div>
+          <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+            <div class="flex flex-wrap items-baseline gap-2">
+              <h3 class="font-semibold">GenAI Developer Intern — Turing.com</h3>
+              <span class="text-xs text-slate-500">Jan 2025 – Present · Remote (Palo Alto)</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Built containerized benchmarking & testing framework for LLM agents; created systematic evaluation protocols to identify reasoning bottlenecks and improve performance.</p>
+          </div>
+        </li>
+        <li class="mb-10 ms-4">
+          <div class="absolute w-3 h-3 bg-sky-500 rounded-full mt-2.5 -start-1.5 border border-white dark:border-slate-900"></div>
+          <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+            <div class="flex flex-wrap items-baseline gap-2">
+              <h3 class="font-semibold">Machine Learning Researcher — York University</h3>
+              <span class="text-xs text-slate-500">Dec 2023 – Present · Toronto</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Built a DL code‑generation benchmark (520 tasks, 3K+ tests) and evaluated GPT‑4o, Claude 3.5, LLaMA 3.1 via Bedrock/OpenAI; ASDiV task‑oriented script generation (accuracy 0.98) with prompt engineering.</p>
+          </div>
+        </li>
+        <li class="mb-10 ms-4">
+          <div class="absolute w-3 h-3 bg-sky-500 rounded-full mt-2.5 -start-1.5 border border-white dark:border-slate-900"></div>
+          <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+            <div class="flex flex-wrap items-baseline gap-2">
+              <h3 class="font-semibold">Database Administrator — York University (History)</h3>
+              <span class="text-xs text-slate-500">Sep 2024 – Present · Toronto</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Maintaining PostgreSQL for research & reporting; performance tuning and analytics queries.</p>
+          </div>
+        </li>
+        <li class="mb-10 ms-4">
+          <div class="absolute w-3 h-3 bg-sky-500 rounded-full mt-2.5 -start-1.5 border border-white dark:border-slate-900"></div>
+          <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+            <div class="flex flex-wrap items-baseline gap-2">
+              <h3 class="font-semibold">MLOps Engineer — MLSys Lab</h3>
+              <span class="text-xs text-slate-500">Jul 2021 – Jul 2022 · Tehran</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">TFX + Airflow pipelines, daily retraining, Wide & Deep recommender (AUC 0.78), lab website (Django, Docker).</p>
+          </div>
+        </li>
+        <li class="mb-10 ms-4">
+          <div class="absolute w-3 h-3 bg-sky-500 rounded-full mt-2.5 -start-1.5 border border-white dark:border-slate-900"></div>
+          <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+            <div class="flex flex-wrap items-baseline gap-2">
+              <h3 class="font-semibold">Backend Developer — Weadigit (Sharif Univ.)</h3>
+              <span class="text-xs text-slate-500">Aug 2021 – Mar 2022 · Tehran</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Django REST APIs for trading platform; Celery tasks; Redis caching.</p>
+          </div>
+        </li>
+        <li class="ms-4">
+          <div class="absolute w-3 h-3 bg-sky-500 rounded-full mt-2.5 -start-1.5 border border-white dark:border-slate-900"></div>
+          <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+            <div class="flex flex-wrap items-baseline gap-2">
+              <h3 class="font-semibold">Research Assistant — AISysLab (UofSC)</h3>
+              <span class="text-xs text-slate-500">Jul 2022 – Jan 2023 · Remote</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">AI‑as‑a‑Service on Kubernetes; dynamic model selection; horizontal/vertical scaling for ML inference.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Projects (Pinned) -->
+  <section id="projects" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <h2 class="text-2xl sm:text-3xl font-bold">Pinned Projects</h2>
+        <a class="text-sm text-sky-600 hover:underline" href="https://github.com/alirezadaghigh99?tab=repositories" target="_blank" rel="noreferrer">View all →</a>
+      </div>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- DL-Bench -->
+        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/DL-Bench" target="_blank" rel="noreferrer">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold leading-tight">DL-Bench</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Deep learning benchmarking utilities and experiments.</p>
+          <div class="mt-4 text-xs text-slate-500">Repo · Updated frequently</div>
+        </a>
+        <!-- medical_rag -->
+        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/medical_rag" target="_blank" rel="noreferrer">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold leading-tight">medical_rag</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Retrieval‑augmented generation experiments for medical texts.</p>
+          <div class="mt-4 text-xs text-slate-500">Repo · RAG</div>
+        </a>
+        <!-- captcha (fork) -->
+        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/captcha" target="_blank" rel="noreferrer">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold leading-tight">captcha</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Go · Fork</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Go package for generating and verifying image/audio CAPTCHAs.</p>
+          <div class="mt-4 text-xs text-slate-500">Forked from dchest/captcha</div>
+        </a>
+        <!-- database-project -->
+        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/database-project" target="_blank" rel="noreferrer">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold leading-tight">database-project</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Coursework project involving database design/queries.</p>
+          <div class="mt-4 text-xs text-slate-500">Repo · Academic</div>
+        </a>
+        <!-- ReadmeAI -->
+        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/ReadmeAI" target="_blank" rel="noreferrer">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold leading-tight">ReadmeAI</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">Python</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Readme tooling / templates enhanced with AI helpers.</p>
+          <div class="mt-4 text-xs text-slate-500">Repo</div>
+        </a>
+        <!-- Splitwise (fork) -->
+        <a class="group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition" href="https://github.com/alirezadaghigh99/Splitwise" target="_blank" rel="noreferrer">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold leading-tight">Splitwise</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">JavaScript · Fork</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Fork of a Splitwise‑style app.</p>
+          <div class="mt-4 text-xs text-slate-500">Forked from nimajam41/DongLand</div>
+        </a>
+      </div>
+      <p class="mt-6 text-xs text-slate-500">Pinned list sourced from your GitHub profile.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-16 lg:py-24 bg-white dark:bg-slate-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold">Skills</h2>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+          <h3 class="font-semibold">Backend & Platforms</h3>
+          <div class="mt-4 flex flex-wrap gap-2 text-sm">
+            <span class="tag">Python</span>
+            <span class="tag">Django / DRF</span>
+            <span class="tag">Golang</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Celery</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Git/GitHub</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+          <h3 class="font-semibold">MLOps & Cloud</h3>
+          <div class="mt-4 flex flex-wrap gap-2 text-sm">
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">AWS</span>
+            <span class="tag">TFX</span>
+            <span class="tag">Airflow</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Prometheus</span>
+            <span class="tag">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Publications (brief) -->
+  <section id="education" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold">Education</h2>
+      <ul class="mt-6 space-y-4 text-sm">
+        <li class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+          <div class="font-semibold">MSc, Computer Science — York University</div>
+          <div class="text-slate-500">Jan 2024 – Aug 2025 (expected) · Toronto, Canada</div>
+        </li>
+        <li class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+          <div class="font-semibold">BSc, Computer Engineering — Sharif University of Technology</div>
+          <div class="text-slate-500">Sep 2017 – Jun 2022 · Tehran, Iran</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 lg:py-24 bg-white dark:bg-slate-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold">Let’s build something.</h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">Open to backend, MLOps, and applied-LLM roles. I love turning ideas into reliable systems.</p>
+          <div class="mt-6 flex flex-wrap gap-3 text-sm">
+            <a class="tag hover:bg-slate-100 dark:hover:bg-slate-900" href="mailto:alireza.daghigh1999@gmail.com">alireza.daghigh1999@gmail.com</a>
+            <a class="tag hover:bg-slate-100 dark:hover:bg-slate-900" href="https://www.linkedin.com/in/alireza-daqiq/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="tag hover:bg-slate-100 dark:hover:bg-slate-900" href="https://github.com/alirezadaghigh99" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        <form class="glass rounded-3xl p-6 ring-1 ring-slate-200 dark:ring-slate-800" onsubmit="event.preventDefault(); alert('Thanks! This demo form only works when wired to a backend.');">
+          <label class="block text-sm font-medium" for="name">Name</label>
+          <input id="name" class="mt-1 w-full rounded-xl border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 ring-1 ring-slate-200 dark:ring-slate-800 focus:outline-none focus:ring-sky-500 px-3 py-2" placeholder="Your name" />
+          <label class="block text-sm font-medium mt-4" for="email">Email</label>
+          <input id="email" type="email" class="mt-1 w-full rounded-xl border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 ring-1 ring-slate-200 dark:ring-slate-800 focus:outline-none focus:ring-sky-500 px-3 py-2" placeholder="you@example.com" />
+          <label class="block text-sm font-medium mt-4" for="msg">Message</label>
+          <textarea id="msg" rows="4" class="mt-1 w-full rounded-xl border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 ring-1 ring-slate-200 dark:ring-slate-800 focus:outline-none focus:ring-sky-500 px-3 py-2" placeholder="Say hi!"></textarea>
+          <button class="mt-5 inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-sky-600 text-white hover:bg-sky-700">
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-slate-200/70 dark:border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex flex-wrap items-center justify-between gap-4">
+      <p>© <span id="year"></span> Alireza Daqiq. All rights reserved.</p>
+      <div class="flex items-center gap-3">
+        <a class="hover:text-sky-600" href="mailto:alireza.daghigh1999@gmail.com">Email</a>
+        <a class="hover:text-sky-600" href="https://github.com/alirezadaghigh99" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="hover:text-sky-600" href="https://www.linkedin.com/in/alireza-daqiq/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const storageKey = 'ad-theme';
+    const html = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const sun = document.getElementById('icon-sun');
+    const moon = document.getElementById('icon-moon');
+
+    function applyTheme(t) {
+      if (t === 'dark') { html.classList.add('dark'); sun.classList.remove('hidden'); moon.classList.add('hidden'); }
+      else { html.classList.remove('dark'); moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+    }
+    const saved = localStorage.getItem(storageKey);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+    btn.addEventListener('click', () => {
+      const next = html.classList.contains('dark') ? 'light' : 'dark';
+      localStorage.setItem(storageKey, next);
+      applyTheme(next);
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // GitHub repos — top 6 by stars (non-forks), then recency fallback
+    async function loadRepos() {
+      const user = 'alirezadaghigh99';
+      const grid = document.getElementById('repoGrid');
+      const error = document.getElementById('repoError');
+      try {
+        const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`);
+        if (!res.ok) throw new Error('GitHub API error');
+        const data = await res.json();
+        const repos = data
+          .filter(r => !r.fork)
+          .sort((a,b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
+          .slice(0, 6);
+
+        if (repos.length === 0) {
+          error.classList.remove('hidden');
+          return;
+        }
+
+        const langColors = {
+          'Python': '#3572A5', 'JavaScript': '#f1e05a', 'TypeScript': '#3178c6', 'Go': '#00ADD8', 'C++': '#f34b7d', 'C': '#555555', 'Java': '#b07219', 'HTML': '#e34c26', 'CSS': '#563d7c'
+        };
+
+        for (const r of repos) {
+          const card = document.createElement('a');
+          card.href = r.html_url;
+          card.target = '_blank';
+          card.rel = 'noreferrer';
+          card.className = 'group block rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-5 hover:ring-sky-400 hover:shadow-lg transition';
+
+          const langDot = `<span class="inline-flex items-center gap-2 text-xs text-slate-500"><span class="h-2 w-2 rounded-full" style="background:${langColors[r.language]||'#94a3b8'}"></span>${r.language||'—'}</span>`;
+
+          card.innerHTML = `
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="font-semibold leading-tight">${r.name}</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full ring-1 ring-slate-200 dark:ring-slate-800">★ ${r.stargazers_count}</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">${r.description || 'No description provided.'}</p>
+            <div class="mt-4 flex items-center justify-between text-xs">
+              ${langDot}
+              <span class="text-slate-500">Updated ${new Date(r.pushed_at).toLocaleDateString()}</span>
+            </div>`;
+
+          grid.appendChild(card);
+        }
+      } catch (e) {
+        error.classList.remove('hidden');
+      }
+    }
+    loadRepos();
+  </script>
+</body>
+</html>
