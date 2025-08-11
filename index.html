@@ -247,7 +247,7 @@
         <!-- Repositories will be loaded here dynamically -->
       </div>
       
-      <p class="mt-6 text-xs text-slate-500">Repositories fetched live from GitHub API, sorted by stars and recent activity.</p>
+      <p class="mt-6 text-xs text-slate-500">Repositories fetched live from GitHub API, showing your pinned projects.</p>
     </div>
   </section>
 
@@ -382,22 +382,45 @@
       grid.innerHTML = '';
       
       try {
-        const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+        // First try to get pinned repositories
+        let repos = [];
+        try {
+          const pinnedRes = await fetch(`https://api.github.com/users/${user}`);
+          if (pinnedRes.ok) {
+            // Get pinned repos using GraphQL-like approach via search
+            const pinnedRepos = ['DL-Bench', 'medical_rag', 'database-project', 'ReadmeAI', 'captcha', 'Splitwise'];
+            const repoPromises = pinnedRepos.map(name => 
+              fetch(`https://api.github.com/repos/${user}/${name}`)
+                .then(res => res.ok ? res.json() : null)
+                .catch(() => null)
+            );
+            const pinnedData = (await Promise.all(repoPromises)).filter(Boolean);
+            
+            if (pinnedData.length > 0) {
+              repos = pinnedData;
+            }
+          }
+        } catch (e) {
+          console.log('Failed to load pinned repos, falling back to starred');
+        }
         
-        // Filter and sort repositories
-        const repos = data
-          .filter(r => !r.fork) // Exclude forks
-          .sort((a, b) => {
-            // Priority order: stars > recent activity > name
-            const starDiff = b.stargazers_count - a.stargazers_count;
-            if (starDiff !== 0) return starDiff;
-            const dateDiff = new Date(b.pushed_at) - new Date(a.pushed_at);
-            if (dateDiff !== 0) return dateDiff;
-            return a.name.localeCompare(b.name);
-          })
-          .slice(0, 9); // Show up to 9 repositories
+        // Fallback to regular repos if pinned repos failed
+        if (repos.length === 0) {
+          const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          
+          repos = data
+            .filter(r => !r.fork)
+            .sort((a, b) => {
+              const starDiff = b.stargazers_count - a.stargazers_count;
+              if (starDiff !== 0) return starDiff;
+              const dateDiff = new Date(b.pushed_at) - new Date(a.pushed_at);
+              if (dateDiff !== 0) return dateDiff;
+              return a.name.localeCompare(b.name);
+            })
+            .slice(0, 9);
+        }
 
         if (repos.length === 0) {
           throw new Error('No repositories found');
